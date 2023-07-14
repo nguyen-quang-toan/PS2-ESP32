@@ -28,37 +28,57 @@ void loop(){
   // Điều chỉnh tốc độ thông trục trục Y của nút joystick bên phải
   int speed = map(ps2x.Analog(PSS_RY), 0, 255, 0, 255);
   // Các trường hợp khi bấm nút
-  if (ps2x.Button(PSB_PAD_UP)) {
+   if (y < 128) {
     // Gọi hàm tiến
     moveForward(speed);
-    Serial.println("PSB_PAD_UP");
-  } else if (ps2x.Button(PSB_PAD_DOWN)) {
+    Serial.println("Moving forward");
+  } else if (y > 128) {
     // Gọi hàm lùi
     moveBack(speed);
-    Serial.println("PSB_PAD_DOWN");
-  } else if (ps2x.Button(PSB_PAD_LEFT)) {
+    Serial.println("Moving backward");
+  } else if (x < 128) {
     // Gọi hàm quay trái
     turnleft(speed);
-    Serial.println("PSB_PAD_LEFT");
-  } else if (ps2x.Button(PSB_PAD_RIGHT)) {
+    Serial.println("Turning left");
+  } else if (x > 128) {
     // Hàm quay phải
     turnRight(speed);
+    Serial.println("Turning right");
+  } else if (ps2x.Button(PSB_PAD_UP)) { 
+    // Nút lên của phím điều hướng
+    Serial.println("PSB_PAD_UP");
+  } else if (ps2x.Button(PSB_PAD_DOWN)) { 
+    // Nút xuống của phím điều hướng
+    Serial.println("PSB_PAD_DOWN");
+  } else if (ps2x.Button(PSB_PAD_LEFT)) { 
+    // Nút bên trái của phím điều hướng
+    Serial.println("PSB_PAD_LEFT");
+  } else if (ps2x.Button(PSB_PAD_RIGHT)) { 
+    // Nút bên phải của phím điều hướng
     Serial.println("PSB_PAD_RIGHT");
   } else if (ps2x.Button(PSB_CROSS)) {
+    // Nút chữ X
     Serial.println("Cross button is pressed");
-  } else if (ps2x.Button(PSB_CIRCLE)) {
+  } else if (ps2x.Button(PSB_CIRCLE)) { 
+    // Nút tròn
     Serial.println("Circle button is pressed");
   } else if (ps2x.Button(PSB_SQUARE)) {
+    // Nút vuông
     Serial.println("Square button is pressed");
-  } else if (ps2x.Button(PSB_TRIANGLE)) {
+  } else if (ps2x.Button(PSB_TRIANGLE)) { 
+    // Nút tam giác
     Serial.println("Triangle button is pressed");
   }else if (ps2x.Button(PSB_L1)) {
+    // Nút L1
     Serial.println("L1 button is pressed");
   } else if (ps2x.Button(PSB_L2)) {
+    // Nút L2
     Serial.println("L2 button is pressed");
   }else if (ps2x.Button(PSB_R1)) {
+    // Nút R1
     Serial.println("R1 button is pressed");
   } else if (ps2x.Button(PSB_R2)) {
+    // Nút R2
     Serial.println("R2 button is pressed");
   } else {
     // Nếu không bấm gì thì gọi hàm dừng
